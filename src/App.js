@@ -1,5 +1,11 @@
+import Main from "./coponents/Main";
+
 const App = () => {
-  return <h1>Weather</h1>;
+  return (
+    <>
+      <Main />
+    </>
+  );
 };
 
 export default App;
