@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import getWeather from "../service/getWeather";
 import { Theme } from "../styles/Theme";
 
 const MainContainer = styled.main`
@@ -10,6 +11,9 @@ const MainContainer = styled.main`
 `;
 
 const Main = () => {
+  useEffect(() => {
+    getWeather("Seoul");
+  }, []);
   return (
     <MainContainer>
       <h1>hello my old friends</h1>
