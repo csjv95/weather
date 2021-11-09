@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import getWeather from "../service/getWeather";
+import { weatherData } from "../redux/modules/weather/weather";
 import { Theme } from "../styles/Theme";
 
 const MainContainer = styled.main`
@@ -11,13 +12,20 @@ const MainContainer = styled.main`
 `;
 
 const Main = () => {
-  useEffect(() => {
-    getWeather("Seoul");
-  }, []);
+  const dispatch = useDispatch();
+  const getWeather = () => dispatch(weatherData());
 
   return (
     <MainContainer>
-      <h1>hello my old friends</h1>
+      <h1>Weather api testing...</h1>
+      <input placeholder="City" />
+      <button
+        onClick={() => {
+          getWeather();
+        }}
+      >
+        Click
+      </button>
     </MainContainer>
   );
 };

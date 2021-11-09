@@ -1,20 +1,50 @@
-// 미들웨어로 로딩 처리하기
-const WEATHER = "weather/WEATHER";
+import { put, call, takeLatest } from "redux-saga/effects";
+import getWeather from "../../../service/getWeather";
 
-export const weather = () => {
-  dispatch({ type: get, weather});
+const WEATHER = "weather/WEATHER";
+const WEATHER_SUCCESS = "weather/WEATHER_SUCCESS";
+const WEATHER__ERROR = "weather/WEATHER__ERROR";
+
+export const weatherData = () => ({ type: WEATHER_SUCCESS });
+
+export function* getWeatherData() {
+  try {
+    const data = yield call(getWeather, "London");
+    yield put({ type: WEATHER_SUCCESS, weather: data });
+  } catch (error) {
+    yield put({ type: WEATHER__ERROR, error });
+  }
+}
+
+export function* weatherDataSaga() {
+  yield takeLatest(WEATHER_SUCCESS, getWeatherData);
 }
 
 const initialState = {
-  weather : null
-}
+  loading: false,
+  error: null,
+  weather: null,
+};
 
-const getWeather = (state=initialState, action) => {
-  switch(action.type){
-    case get : 
+export default function weatherDatas(state = initialState, action) {
+  switch (action.type) {
+    case WEATHER:
       return {
         ...state,
-        weather : action.weather
-      }
+        loading: true,
+      };
+    case WEATHER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        weather: action.weather,
+      };
+    case WEATHER__ERROR:
+      return {
+        ...state,
+        error: action.error,
+      };
+    default:
+      return state;
   }
 }
