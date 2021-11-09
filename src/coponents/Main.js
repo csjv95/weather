@@ -14,6 +14,7 @@ const Main = () => {
   useEffect(() => {
     getWeather("Seoul");
   }, []);
+
   return (
     <MainContainer>
       <h1>hello my old friends</h1>
