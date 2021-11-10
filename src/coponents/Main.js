@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { WEATHER } from "../redux/modules/weather/weather";
 import { Theme } from "../styles/Theme";
 
 const MainContainer = styled.main`
@@ -11,11 +12,10 @@ const MainContainer = styled.main`
 `;
 
 const Main = () => {
-  const WEATHER_SUCCESS = "weather/WEATHER_SUCCESS";
   const dispatch = useDispatch();
 
   const hello = () => {
-    dispatch({ type: WEATHER_SUCCESS });
+    dispatch({ type: WEATHER, weather: "London" });
   };
 
   return (

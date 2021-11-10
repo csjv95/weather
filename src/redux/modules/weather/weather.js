@@ -1,14 +1,18 @@
-import { put, takeEvery } from "redux-saga/effects";
+import { call, takeEvery, put } from "@redux-saga/core/effects";
+import getWeather from "../../../service/getWeather";
 
-const WEATHER = "weather/WEATHER";
-const WEATHER_SUCCESS = "weather/WEATHER_SUCCESS";
-const WHATER_ERROR = "weather/WEATHER_ERROR";
+export const WEATHER = "weather/WEATHER";
+export const WEATHER_SUCCESS = "weather/WEATHER_SUCCESS";
+export const WHATER_ERROR = "weather/WEATHER_ERROR";
 
-export const weatherAync = () => ({ type: WEATHER_SUCCESS });
+export const weatherSuccess = (city) => ({ type: WEATHER_SUCCESS, city });
 
-function* weatherDatas() {
+export function* weatherDatas(action) {
+  const city = action.weather;
+  console.log(city);
   try {
-    yield put({ type: WEATHER_SUCCESS, weather: "hello" });
+    const weather = yield call(getWeather, city);
+    yield put({ type: WEATHER_SUCCESS, weather });
   } catch (error) {
     yield put({ type: WHATER_ERROR, error: error });
   }
@@ -21,10 +25,10 @@ const initialState = {
 };
 
 export function* weatherStart() {
-  yield takeEvery(WEATHER_SUCCESS, weatherDatas);
+  yield takeEvery(WEATHER, weatherDatas);
 }
 
-export default function weather(state = initialState, action) {
+export default function weatherApi(state = initialState, action) {
   switch (action.type) {
     case WEATHER:
       return {
