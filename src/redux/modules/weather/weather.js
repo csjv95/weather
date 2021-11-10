@@ -9,7 +9,6 @@ export const weatherSuccess = (city) => ({ type: WEATHER_SUCCESS, city });
 
 export function* weatherDatas(action) {
   const city = action.weather;
-  console.log(city);
   try {
     const weather = yield call(getWeather, city);
     yield put({ type: WEATHER_SUCCESS, weather });

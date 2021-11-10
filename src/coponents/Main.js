@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { WEATHER } from "../redux/modules/weather/weather";
@@ -12,22 +12,30 @@ const MainContainer = styled.main`
 `;
 
 const Main = () => {
+  const [city, setCity] = useState(null);
   const dispatch = useDispatch();
 
-  const hello = () => {
-    dispatch({ type: WEATHER, weather: "London" });
+  console.log(city);
+
+  const onClickWeather = () => {
+    dispatch({ type: WEATHER, weather: city });
+  };
+
+  const onChangeCity = (event) => {
+    const city = event.target.value;
+    setCity(city);
   };
 
   return (
     <MainContainer>
+      <input placeholder="City" onChange={onChangeCity} />
       <button
         onClick={() => {
-          hello();
+          onClickWeather();
         }}
       >
-        increase
+        Get Weather
       </button>
-      <button>decresase</button>
     </MainContainer>
   );
 };
