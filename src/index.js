@@ -4,12 +4,12 @@ import GlobalStyle from "./styles/GlobalStyle";
 import App from "./App";
 import { ThemeProvider } from "styled-components";
 import { Theme } from "./styles/Theme";
-import { applyMiddleware, createStore } from "redux";
-import rootReducer, { rootSaga } from "./redux/modules";
 import { Provider } from "react-redux";
-import logger from "redux-logger";
+import { applyMiddleware, createStore } from "redux";
+import rootReducer, { rootSaga } from "./redux/modules/weather/rootReducer";
 import { composeWithDevTools } from "redux-devtools-extension";
-import createSagaMiddleware from "@redux-saga/core";
+import logger from "redux-logger";
+import createSagaMiddleware from "redux-saga";
 
 const sagaMiddleware = createSagaMiddleware();
 
