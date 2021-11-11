@@ -1,5 +1,5 @@
-import Main from "./coponents/Main";
-import Header from "./coponents/Header";
+import Main from "./coponents/Main/Main";
+import Header from "./coponents/Header/Header";
 import styled from "styled-components";
 import { Theme } from "./styles/Theme";
 
@@ -8,7 +8,8 @@ const StAppContainer = styled.section`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-image: url(${Theme.bgi.cloudy});
+  /* background-image: url(${Theme.bgi.rain}); */
+  background-color: #cbdcff;
   background-repeat: no-repeat;
 `;
 

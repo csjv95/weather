@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { all } from "redux-saga/effects";
-import weather, { weatherStart } from "./weather";
+import weather, { weatherStart } from "./weather/weather";
 
 const rootReducer = combineReducers({ weather });
 

@@ -1,8 +1,8 @@
 const bgi = {
-  rain: "/imgs/rain.jpg",
-  snow: "/imgs/snow.jpg",
-  sunny: "imgs/sunny.jpg",
-  cloudy: "imgs/cloudy.jpg",
+  rain: "/imgs/weatherBg/rain.jpg",
+  snow: "/imgs/weatherBg/snow.jpg",
+  sunny: "imgs/weatherBg/sunny.jpg",
+  cloudy: "imgs/weatherBg/cloudy.jpg",
 };
 
 export const Theme = {

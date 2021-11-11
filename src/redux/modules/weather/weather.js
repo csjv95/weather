@@ -1,5 +1,5 @@
-import { call, put, takeLatest } from "@redux-saga/core/effects";
-import getWeather from "../../../service/getWeather";
+import { call, delay, put, takeLatest } from "@redux-saga/core/effects";
+import getWeather from "../../../service/weathers/getWeather";
 
 export const WEATHER = "weather/WEATHER";
 export const WEATHER_SUCCESS = "weather/WEATHER_SUCCESS";

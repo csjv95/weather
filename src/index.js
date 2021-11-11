@@ -6,7 +6,7 @@ import { ThemeProvider } from "styled-components";
 import { Theme } from "./styles/Theme";
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
-import rootReducer, { rootSaga } from "./redux/modules/weather/rootReducer";
+import rootReducer, { rootSaga } from "./redux/modules/rootReducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 import logger from "redux-logger";
 import createSagaMiddleware from "redux-saga";
