@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { WEATHER } from "../redux/modules/weather/weather";
-import { Theme } from "../styles/Theme";
 
-const MainContainer = styled.main`
-  width: 100%;
-  height: 100vh;
-  background-image: url(${Theme.bgi.cloudy});
-  background-repeat: no-repeat;
+const StMainContainer = styled.main`
+  flex-grow: 1;
 `;
 
 const Main = () => {
@@ -18,7 +14,7 @@ const Main = () => {
   console.log(city);
 
   const onClickWeather = () => {
-    dispatch({ type: WEATHER, weather: city });
+    dispatch({ type: WEATHER, city });
   };
 
   const onChangeCity = (event) => {
@@ -27,7 +23,7 @@ const Main = () => {
   };
 
   return (
-    <MainContainer>
+    <StMainContainer>
       <input placeholder="City" onChange={onChangeCity} />
       <button
         onClick={() => {
@@ -36,7 +32,7 @@ const Main = () => {
       >
         Get Weather
       </button>
-    </MainContainer>
+    </StMainContainer>
   );
 };
 

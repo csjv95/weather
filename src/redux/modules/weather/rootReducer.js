@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import { all } from "redux-saga/effects";
-import weatherApi, { weatherStart } from "./weather";
+import weather, { weatherStart } from "./weather";
 
-const rootReducer = combineReducers({ weatherApi });
+const rootReducer = combineReducers({ weather });
 
 export function* rootSaga() {
   yield all([weatherStart()]);
