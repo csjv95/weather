@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import matchImg from "../../service/matchImg/mathImg";
 
 const StList = styled.ul`
   margin-top: 3rem;
@@ -31,14 +32,12 @@ const TodayWeather = ({ todayWeather }) => {
         const temp = (weather.main.temp - changeCelsius).toFixed(2);
         const feelLike = (weather.main.feels_like - changeCelsius).toFixed(1);
         const description = weather.weather[0].description;
+        const weatherNum = weather.weather[0].id;
 
         return (
           <StListItem key={weather.dt}>
             <div>{weather.dt_txt}</div>
-            <StImg
-              src="https://openweathermap.org/img/wn/13d@2x.png"
-              alt="weather img"
-            />
+            <StImg src={matchImg(weatherNum)} alt="weather img" />
             <div>{description}</div>
             <div>{`기온 ${temp}°C`}</div>
             <div>{`체감 온도 ${feelLike}°C`}</div>
