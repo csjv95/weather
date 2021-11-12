@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import matchImg from "../../service/matchImg/mathImg";
+import TodayWeatherItem from "./TodayWeatherItem";
+import TodayWeatherItemHover from "./TodayWeatherItemHover";
 
 const StList = styled.ul`
   margin-top: 3rem;
@@ -8,40 +9,60 @@ const StList = styled.ul`
   justify-content: center;
 `;
 
-const StListItem = styled.li`
+export const StListItem = styled.li`
   margin: 0 0.5rem;
+  text-align: center;
   border: 1px solid #d7e8ff;
   border-radius: 2em;
   background-color: #d7e8ff;
+  transition: hover 300ms ease-out;
+  font-weight: 600;
+
+  &:hover {
+    opacity: 20%;
+    set
+  }
 `;
 
-const StImg = styled.img`
-  width: 10rem;
-  height: 10rem;
+export const StImg = styled.img`
+  width: 7rem;
+  height: 7rem;
 `;
 
-const TodayWeather = ({ todayWeather }) => {
+const TodayWeather = ({ todayWeather, hover, setHover }) => {
   // todayWeather 날씨 보고 이미지랑 맞게 뿌리기 온도랑 시간대별로
-  const changeCelsius = 273.15;
-  const time = todayWeather;
+  console.log(hover);
 
-  console.log(time);
   return (
-    <StList>
+    <StList
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
       {todayWeather.map((weather) => {
+        const changeCelsius = 273.15;
         const temp = (weather.main.temp - changeCelsius).toFixed(2);
         const feelLike = (weather.main.feels_like - changeCelsius).toFixed(1);
         const description = weather.weather[0].description;
         const weatherNum = weather.weather[0].id;
 
-        return (
-          <StListItem key={weather.dt}>
-            <div>{weather.dt_txt}</div>
-            <StImg src={matchImg(weatherNum)} alt="weather img" />
-            <div>{description}</div>
-            <div>{`기온 ${temp}°C`}</div>
-            <div>{`체감 온도 ${feelLike}°C`}</div>
-          </StListItem>
+        return hover ? (
+          <TodayWeatherItemHover
+            key={weather.dt}
+            weather={weather}
+            temp={temp}
+            feelLike={feelLike}
+            description={description}
+            weatherNum={weatherNum}
+          />
+        ) : (
+          <TodayWeatherItem
+            key={weather.dt}
+            weather={weather}
+            temp={temp}
+            feelLike={feelLike}
+            description={description}
+            weatherNum={weatherNum}
+          />
         );
       })}
     </StList>

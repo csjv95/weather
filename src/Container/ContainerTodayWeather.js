@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import TodayWeather from "../coponents/TodayWeather/TodayWeather";
 import { today } from "../service/date/date";
 
 const ContainerTodayWeather = () => {
+  const [hover, setHover] = useState(false);
   const weather = useSelector((state) => state.weather);
 
   if (weather.loading) return <div>hello</div>;
@@ -16,7 +17,13 @@ const ContainerTodayWeather = () => {
     return todayWeatherList;
   });
 
-  return <TodayWeather todayWeather={todayWeather} />;
+  return (
+    <TodayWeather
+      todayWeather={todayWeather}
+      hover={hover}
+      setHover={setHover}
+    />
+  );
 };
 
 export default ContainerTodayWeather;
