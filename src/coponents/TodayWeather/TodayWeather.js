@@ -21,11 +21,30 @@ const StImg = styled.img`
 
 const TodayWeather = ({ todayWeather }) => {
   // todayWeather 날씨 보고 이미지랑 맞게 뿌리기 온도랑 시간대별로
+  const changeCelsius = 273.15;
+  const time = todayWeather;
+
+  console.log(time);
   return (
     <StList>
-      <StListItem>
-        <StImg />
-      </StListItem>
+      {todayWeather.map((weather) => {
+        const temp = (weather.main.temp - changeCelsius).toFixed(2);
+        const feelLike = (weather.main.feels_like - changeCelsius).toFixed(1);
+        const description = weather.weather[0].description;
+
+        return (
+          <StListItem key={weather.dt}>
+            <div>{weather.dt_txt}</div>
+            <StImg
+              src="https://openweathermap.org/img/wn/13d@2x.png"
+              alt="weather img"
+            />
+            <div>{description}</div>
+            <div>{`기온 ${temp}°C`}</div>
+            <div>{`체감 온도 ${feelLike}°C`}</div>
+          </StListItem>
+        );
+      })}
     </StList>
   );
 };
