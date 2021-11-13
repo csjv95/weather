@@ -3,6 +3,7 @@ import { StImg, StListItem } from "./TodayWeather";
 import matchImg from "../../service/matchImg/mathImg";
 
 const TodayWeatherItemHover = ({
+  setHover,
   weather,
   temp,
   feelLike,

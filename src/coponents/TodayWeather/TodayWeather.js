@@ -17,11 +17,6 @@ export const StListItem = styled.li`
   background-color: #d7e8ff;
   transition: hover 300ms ease-out;
   font-weight: 600;
-
-  &:hover {
-    opacity: 20%;
-    set
-  }
 `;
 
 export const StImg = styled.img`
