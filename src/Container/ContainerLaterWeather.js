@@ -13,7 +13,7 @@ const ContainerLaterWeather = () => {
   const weather = useSelector((state) => state.weather);
 
   if (weather.loading) return <div>hello</div>;
-  if (!weather.weather) return <div>loading....</div>;
+  if (!weather.weather) return <div>laterWeather....</div>;
 
   const laterWeather = weather.weather.list.filter((item) => {
     const time = item.dt_txt;
