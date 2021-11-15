@@ -1,13 +1,8 @@
 import React from "react";
+import LaterDays from "./LaterDays";
 
 const LaterWeatherItem = ({ nextDay }) => {
-  console.log(nextDay);
-
-  return (
-    <section>
-      <h2>{nextDay.day}</h2>
-    </section>
-  );
+  return nextDay.map((day, index) => <LaterDays key={index} day={day} />);
 };
 
 export default LaterWeatherItem;

@@ -11,6 +11,7 @@ const StAppContainer = styled.section`
   /* background-image: url(${Theme.bgi.rain}); */
   background-color: #cbdcff;
   background-repeat: no-repeat;
+  overflow: auto;
 `;
 
 const App = () => {

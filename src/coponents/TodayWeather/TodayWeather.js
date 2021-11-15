@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import TodayWeatherItem from "./TodayWeatherItem";
-import TodayWeatherItemHover from "./TodayWeatherItemHover";
 
-const StList = styled.ul`
+export const StList = styled.ul`
   margin-top: 3rem;
   display: flex;
   justify-content: center;
@@ -36,7 +35,6 @@ const TodayWeather = ({ todayWeather }) => {
         const humidity = weather.main.humidity;
         const pressure = weather.main.pressure;
         const description = weather.weather[0].description;
-        const weatherNum = weather.weather[0].id;
         const icon = weather.weather[0].icon;
 
         return (
@@ -51,7 +49,6 @@ const TodayWeather = ({ todayWeather }) => {
             pressure={pressure}
             icon={icon}
             description={description}
-            weatherNum={weatherNum}
           />
         );
       })}

@@ -12,7 +12,6 @@ const TodayWeatherItem = ({
   pressure,
   icon,
   description,
-  weatherNum,
 }) => {
   const [hover, setHover] = useState(false);
 
