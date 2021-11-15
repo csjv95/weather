@@ -16,22 +16,18 @@ const LaterWeather = ({
   const nextDays = [
     {
       index: 0,
-      day: oneDaysLater,
       data: oneDaysLaterWeather,
     },
     {
       index: 1,
-      day: twoDaysLater,
       data: twoDaysLaterWeather,
     },
     {
       index: 2,
-      day: ThreeDaysLater,
       data: ThreeDaysLaterWeather,
     },
     {
       index: 3,
-      day: fourDaysLater,
       data: fourDaysLaterWeather,
     },
   ];

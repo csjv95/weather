@@ -24,37 +24,32 @@ export const StImg = styled.img`
   height: 7rem;
 `;
 
-const TodayWeather = ({ todayWeather, hover, setHover }) => {
-  // todayWeather 날씨 보고 이미지랑 맞게 뿌리기 온도랑 시간대별로
-  console.log(hover);
-
+const TodayWeather = ({ todayWeather }) => {
   return (
-    <StList
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
+    <StList>
       {todayWeather.map((weather) => {
         const changeCelsius = 273.15;
         const temp = (weather.main.temp - changeCelsius).toFixed(2);
         const feelLike = (weather.main.feels_like - changeCelsius).toFixed(1);
+        const maxTemp = weather.main.temp_max;
+        const minTemp = weather.main.temp_min;
+        const humidity = weather.main.humidity;
+        const pressure = weather.main.pressure;
         const description = weather.weather[0].description;
         const weatherNum = weather.weather[0].id;
+        const icon = weather.weather[0].icon;
 
-        return hover ? (
-          <TodayWeatherItemHover
-            key={weather.dt}
-            weather={weather}
-            temp={temp}
-            feelLike={feelLike}
-            description={description}
-            weatherNum={weatherNum}
-          />
-        ) : (
+        return (
           <TodayWeatherItem
             key={weather.dt}
             weather={weather}
             temp={temp}
             feelLike={feelLike}
+            maxTemp={maxTemp}
+            minTemp={minTemp}
+            humidity={humidity}
+            pressure={pressure}
+            icon={icon}
             description={description}
             weatherNum={weatherNum}
           />

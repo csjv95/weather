@@ -3,7 +3,8 @@ const date = new Date();
 const day = date.getDate();
 const month = date.getMonth() + 1;
 const year = date.getFullYear();
-const thisToday = date.getDay();
+// const options = { weekday: "long" };
+// const thisToday = new Intl.DateTimeFormat("ko-KR", options).format(date);
 const today = `${year}-${month}-${day}`;
 const oneDaysLater = `${year}-${month}-${day + 1}`;
 const twoDaysLater = `${year}-${month}-${day + 2}`;
@@ -14,7 +15,6 @@ export {
   day,
   month,
   year,
-  thisToday,
   today,
   oneDaysLater,
   twoDaysLater,
